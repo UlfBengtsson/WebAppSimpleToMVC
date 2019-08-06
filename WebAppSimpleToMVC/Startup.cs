@@ -25,10 +25,12 @@ namespace WebAppSimpleToMVC
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("<h1>Hello World!</h1>");
-            });
+            app.UseStaticFiles();
+
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response.WriteAsync("<h1>Hello World!</h1>");
+            //});
         }
     }
 }
