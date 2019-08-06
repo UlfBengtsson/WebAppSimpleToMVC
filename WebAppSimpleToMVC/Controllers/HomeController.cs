@@ -12,5 +12,33 @@ namespace WebAppSimpleToMVC.Controllers
         {
             return View();
         }
+
+        public IActionResult Cars()
+        {
+            return View();
+        }
+
+        public IActionResult Pets()
+        {
+            string[] pets = { "Cats", "Dogs", "Fish" };
+            ViewBag.Pets = pets;
+
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult CurrencyConverter()
+        {
+            return View("Currency");
+        }
+
+        [HttpPost]
+        public IActionResult CurrencyConverter(int skr)
+        {
+            ViewBag.SKR = skr;
+            ViewBag.USD = skr * 0.1;
+
+            return View("Currency");
+        }
     }
 }

@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Currency";
+}
+
+<h1>Currency</h1>
+
+@if (ViewBag.USD != null && ViewBag.SKR != null)
+{
+<h3>@ViewBag.SKR SKR becomes @ViewBag.USD USD</h3>
+}
+
+<form asp-action="CurrencyConverter" method="post">
+    <label for="skr">SKR</label>
+    <input type="number" id="skr" name="skr" value="1" />
+
+    <input type="submit"  value="Convert to USD" />
+</form>

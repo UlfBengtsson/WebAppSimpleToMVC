@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Pets";
+}
+
+<h1>Pets</h1>
+
+@if (ViewBag.Pets != null)
+{
+    <ul>
+        @foreach (var item in ViewBag.Pets as string[])
+        {
+            <li>@item</li>
+        }
+    </ul>
+}
