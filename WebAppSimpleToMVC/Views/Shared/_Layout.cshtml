@@ -5,29 +5,50 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <link href="~/css/MyStyle.css" rel="stylesheet" />
 
 </head>
 <body>
-    <nav>
-        <ul>
-            <li>
-                @Html.ActionLink("Start","Index","Home")
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="#">Logo</a>
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                @Html.ActionLink("Start", "Index", "Home", null, new { @class = "nav-link" })
             </li>
-            <li>
-                @Html.ActionLink("My Cars", "Cars", "Home")
+            <li class="nav-item">
+                @Html.ActionLink("My Cars", "Cars", "Home", null, new { @class = "nav-link" })
             </li>
-            <li>
-                <a asp-action="Pets" asp-controller="Home"> Cute Pets</a>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Pets" asp-controller="Home"> Cute Pets</a>
             </li>
-            <li>
-                <a asp-action="CurrencyConverter" asp-controller="Home"> Currency Converter</a>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="CurrencyConverter" asp-controller="Home"> Currency Converter</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="PickColor" asp-controller="Home">Pick Color</a>
             </li>
         </ul>
     </nav>
-    <div>
+
+    <div class="container-fluid">
         @RenderBody()
     </div>
+
     <footer>
         <p>&copy; ASP.NET</p>
     </footer>

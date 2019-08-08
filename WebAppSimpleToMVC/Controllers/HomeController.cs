@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAppSimpleToMVC.Controllers
@@ -39,6 +40,53 @@ namespace WebAppSimpleToMVC.Controllers
             ViewBag.USD = skr * 0.1;
 
             return View("Currency");
+        }
+
+        [HttpGet]
+        public IActionResult PickColor()
+        {
+            string theColor;
+
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("BootColor")))
+            {
+                theColor = "Dark";
+            }
+            else
+            {
+                theColor = HttpContext.Session.GetString("BootColor");
+            }
+
+            ViewBag.Color = theColor;
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult PickColor(string SelectedColor)
+        {
+            if (SelectedColor == "Dark")
+            {
+                HttpContext.Session.SetString("BootColor", "Dark");
+            }
+            else if (SelectedColor == "Light")
+            {
+                HttpContext.Session.SetString("BootColor", "Light");
+            }
+
+            string theColor;
+
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("BootColor")))
+            {
+                theColor = "Dark";
+            }
+            else
+            {
+                theColor = HttpContext.Session.GetString("BootColor");
+            }
+
+            ViewBag.Color = theColor;
+
+            return View();
         }
     }
 }

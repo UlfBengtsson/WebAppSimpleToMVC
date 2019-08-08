@@ -15,6 +15,17 @@ namespace WebAppSimpleToMVC
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromMinutes(1);
+                options.Cookie.HttpOnly = true;
+                // Make the session cookie essential
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddMvc();
         }
 
@@ -27,7 +38,7 @@ namespace WebAppSimpleToMVC
             }
 
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseMvcWithDefaultRoute();
 
             //app.Run(async (context) =>
