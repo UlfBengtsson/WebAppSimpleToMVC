@@ -1,18 +1,27 @@
 ﻿
 @{
     ViewData["Title"] = "Currency";
+
+    if (ViewBag.Color == null)
+    {
+        ViewBag.Color = "Dark";
+    }
 }
 
 <h1>Currency</h1>
 
-@if (ViewBag.USD != null && ViewBag.SKR != null)
-{
-<h3>@ViewBag.SKR SKR becomes @ViewBag.USD USD</h3>
-}
+<div class="@ViewBag.Color">
 
-<form asp-action="CurrencyConverter" method="post">
-    <label for="skr">SKR</label>
-    <input type="number" id="skr" name="skr" value="1" />
+    @if (ViewBag.USD != null && ViewBag.SKR != null)
+    {
+    <h3>@ViewBag.SKR SKR becomes @ViewBag.USD USD</h3>
+    }
 
-    <input type="submit"  value="Convert to USD" />
-</form>
+    <form asp-action="CurrencyConverter" method="post">
+        <label for="skr">SKR</label>
+        <input type="number" id="skr" name="skr" value="1" />
+
+        <input type="submit"  value="Convert to USD" />
+    </form>
+
+</div>

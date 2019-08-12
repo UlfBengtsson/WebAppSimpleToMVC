@@ -1,0 +1,16 @@
+﻿@model Car
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<form asp-action="Create" method="post">
+
+    <input asp-for="Id" />
+    <input asp-for="Brand" />
+    <input asp-for="ModelName" />
+    <input asp-for="Color" />
+
+    <input class="btn btn-default" type="submit" value="Create Car" />
+</form>

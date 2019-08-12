@@ -30,12 +30,16 @@ namespace WebAppSimpleToMVC.Controllers
         [HttpGet]
         public IActionResult CurrencyConverter()
         {
+            ViewBag.Color = BootColor();
+
             return View("Currency");
         }
 
         [HttpPost]
         public IActionResult CurrencyConverter(int skr)
         {
+            ViewBag.Color = BootColor();
+
             ViewBag.SKR = skr;
             ViewBag.USD = skr * 0.1;
 
@@ -45,18 +49,7 @@ namespace WebAppSimpleToMVC.Controllers
         [HttpGet]
         public IActionResult PickColor()
         {
-            string theColor;
-
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("BootColor")))
-            {
-                theColor = "Dark";
-            }
-            else
-            {
-                theColor = HttpContext.Session.GetString("BootColor");
-            }
-
-            ViewBag.Color = theColor;
+            ViewBag.Color = BootColor();
 
             return View();
         }
@@ -73,20 +66,22 @@ namespace WebAppSimpleToMVC.Controllers
                 HttpContext.Session.SetString("BootColor", "Light");
             }
 
-            string theColor;
 
+            ViewBag.Color = BootColor();
+
+            return View();
+        }
+
+        private string BootColor()
+        {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("BootColor")))
             {
-                theColor = "Dark";
+                return "Dark";
             }
             else
             {
-                theColor = HttpContext.Session.GetString("BootColor");
+                return HttpContext.Session.GetString("BootColor");
             }
-
-            ViewBag.Color = theColor;
-
-            return View();
         }
     }
 }
