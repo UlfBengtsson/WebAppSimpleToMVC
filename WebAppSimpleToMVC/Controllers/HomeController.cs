@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebAppSimpleToMVC.Models;
 
 namespace WebAppSimpleToMVC.Controllers
 {
@@ -16,7 +17,12 @@ namespace WebAppSimpleToMVC.Controllers
 
         public IActionResult Cars()
         {
-            return View();
+            List<Car> myCars = new List<Car>();
+
+            myCars.Add(new Car(1,"Saab","900SE", "Red"));
+            myCars.Add(new Car(2, "BMW", "525i", "Blue"));
+
+            return View(myCars);
         }
 
         public IActionResult Pets()

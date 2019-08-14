@@ -1,12 +1,23 @@
-﻿
+﻿@model List<Car>
 @{
     ViewData["Title"] = "Cars";
 }
 
 <h1>Cars</h1>
 
-<ol>
+@*<ol>
     <li>Saab 900</li>
     <li>BMW 251i</li>
     <li>Volvo S60</li>
-</ol>
+</ol>*@
+
+<div class="row">
+    <div class="col-12">
+
+        @foreach (var item in Model)
+        {
+            <partial name="_OneCar" model="item" />  
+        }
+
+    </div>
+</div>

@@ -1,4 +1,4 @@
-﻿@model  List<Car>
+﻿@model List<Car>
 @{
     ViewData["Title"] = "Index";
 }
@@ -7,13 +7,23 @@
 
 <a asp-action="Create">Create a Car</a>
 
-<table>
-    @foreach (Car aCar in Model)
-	{
-    <tr>
-        <td>@aCar.Brand</td>
-        <td>@aCar.ModelName</td>
-        <td>@aCar.Color</td>
-    </tr>
-	}
-</table>
+<div class="row">
+    <div class="col-12">
+
+        @foreach (Car aCar in Model)
+        {
+            <partial name="_OneCar" model="aCar" />
+        }
+
+    </div>
+</div>
+
+
+    @*@foreach (Car aCar in Model)
+        {
+        <tr>
+            <td>@aCar.Brand</td>
+            <td>@aCar.ModelName</td>
+            <td>@aCar.Color</td>
+        </tr>
+        }*@
